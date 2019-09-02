@@ -1,0 +1,118 @@
+version: '2'
+services:
+#
+#services:
+#
+#  db:
+##    image: mysql:latest
+#    image: mysql/mysql-server:5.7
+##    command: --default-authentication-plugin=mysql_native_password
+##    networks:
+##     - dev
+#    ports:
+#     - "3306:3306"
+#     - "3306:3306"
+#    restart: always
+##    environment:
+##      MYSQL_ROOT_PASSWORD: example
+#    volumes:
+#     - mysql_data:/var/lib/mysql
+#     - ./conf/my.cnf:/etc/my.cnf
+#     - ./init:/docker-entrypoint-initdb.d/
+#
+#  adminer:
+#    image: adminer
+##    networks:
+##    - dev
+#    restart: always
+#    ports:
+#      - 8080:8080
+#
+##networks:
+##  dev:
+##    driver: bridge
+#volumes:
+#  mysql_data:
+
+
+
+
+#mysql容器
+  mysqlcom:
+
+    #使用的镜像
+    image: mysql:latest
+    #容器的映射端口
+    ports:
+    - 3307:3306
+    - 33061:33060
+    networks:
+      net1:
+        aliases:
+        - mysqlcom
+
+    #定义IP网络
+    #    networks:
+    #      staticneta:
+    #        ipv4_address: 172.20.1.5
+    #定义挂载点
+    volumes:
+    - ./data:/var/lib/mysql
+
+    #定义mysql字符utf8
+    command: --character-set-server=utf8
+    #定义环境变量,mysql里密码，用户，数据库
+    environment:
+    - TZ=Asia/Shanghai
+    - LANG=en_US.UTF-8
+    - MYSQL_ROOT_PASSWORD=123456
+networks:
+  net1:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#version: "3.3"
+#services:
+#  Redis:
+#    image: sameersbn/redis:latest
+#    ports:
+#    - "6379:6379"
+#    volumes:
+#    - redis_data:/var/lib/redis
+#    restart: always
+#  mysql:
+#    image: mysql:latest
+#    restart: always
+#    command: --default-authentication-plugin=mysql_native_password #这行代码解决无法访问的问题
+#    networks:
+#    - dev
+#    ports:
+#    - "3306:3306"
+#    environment:
+#      MYSQL_ROOT_PASSWORD: abc123
+#      MYSQL_USER: 'test'
+#      MYSQL_PASS: 'test'
+#    volumes:
+#    - mysql_data:/var/lib/mysql
+#networks:
+#  dev:
+#    driver: bridge
+#volumes:
+#  redis_data:
+#  mysql_data:
