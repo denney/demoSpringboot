@@ -1,5 +1,9 @@
-root@localhost init # cat init.sql
-use mysql;
+
+CREATE USER 'dst'@'%' IDENTIFIED BY '123456';
+GRANT All privileges ON *.* TO 'dst'@'%';
+
+-- root@localhost init # cat init.sql
+-- use mysql;
 create database test;
 use test;
 create table user
