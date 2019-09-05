@@ -1,4 +1,4 @@
-package com.example.demoSpringboot.model;
+package com.example.model;
 
 import org.junit.Test;
 
